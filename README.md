@@ -25,7 +25,7 @@ npm install --save-dev md2confluence
 It's mandatory. It looks like:
 ```javascript
 {
-  "baseUrl": "https://my.atlassian.net/wiki/rest/api",
+  "baseUrl": "https://my.atlassian.net/wiki/rest/api (Optional)",
   "user": "my-user (Optional)",
   "pass": "my-password (Optional)",
   "prefix": "This document is automatically generated. Please don't edit it directly!",
@@ -44,7 +44,7 @@ It's mandatory. It looks like:
 
 | Key | Description |
 | --- | --- |
-| baseUrl | the Atlassian API url of confluence |
+| baseUrl | the Atlassian API url of confluence. If you don't set any it will be prompt it |
 | user | your confluence username. If you don't set any it will be prompt it |
 | pass | your confluence password. If you don't set any it will be prompt it |
 | prefix | OPTIONAL - a general information that is included at the top of the confluence page |
@@ -60,11 +60,12 @@ Each page object can define the following key value pairs.
 | mdfile | The path to the file in Markdown format with the content to update the page. It's relative to the dir where you run the command. |
 | title | the page title, if skipped the already defined page title will be kept.
 
-### Use Environmental Variables to store username and password
+### Use Environmental Variables to store baseUrl, username and password
 
-If you wish to not use the config file to store your username and password, you may also use your Environmental Variables to do so. The name of the environmental variables must be as below:
+If you wish to not use the config file to store your baseUrl, username and password, you may also use your Environmental Variables to do so. The name of the environmental variables must be as below:
 
 ```
+BaseUrl = $MD2CBASEURL
 Username = $MD2CUSER
 Password = $MD2CPASS
 ```
