@@ -21,6 +21,7 @@ var logger = createLogger({
   format: format.cli()
 });
 var prompts = [];
+var baseUrl = process.env.MD2CBASEURL;
 var user = process.env.MD2CUSER;
 var pass = process.env.MD2CPASS;
 var config = void 0;
@@ -39,12 +40,24 @@ try {
   }
 }
 
+if (baseUrl) {
+  config.baseUrl = baseUrl;
+}
+
 if (user) {
   config.user = user;
 }
 
 if (pass) {
   config.pass = pass;
+}
+
+if (!config.baseUrl) {
+  prompts.push({
+    type: 'input',
+    name: 'baseUrl',
+    message: 'Your Confluence API base url:'
+  });
 }
 
 if (!config.user) {
@@ -64,6 +77,7 @@ if (!config.pass) {
 
 inquirer.prompt(prompts).then(function (_answers) {
   var answers = _answers;
+  answers.baseUrl = config.baseUrl || answers.baseUrl;
   answers.user = config.user || answers.user;
   answers.pass = config.pass || answers.pass;
 
@@ -113,7 +127,7 @@ inquirer.prompt(prompts).then(function (_answers) {
         // 3. Transform the Markdown Wiki to Storage (confluence scripting)
         promise = rp({
           method: 'POST',
-          uri: config.baseUrl + '/contentbody/convert/storage',
+          uri: answers.baseUrl + '/contentbody/convert/storage',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -134,7 +148,7 @@ inquirer.prompt(prompts).then(function (_answers) {
 
           return rp({
             method: 'GET',
-            uri: config.baseUrl + '/content/' + pageData.pageid,
+            uri: answers.baseUrl + '/content/' + pageData.pageid,
             body: {
               some: 'payload'
             },
@@ -161,7 +175,7 @@ inquirer.prompt(prompts).then(function (_answers) {
 
           return rp({
             method: 'PUT',
-            uri: config.baseUrl + '/content/' + pageData.pageid,
+            uri: answers.baseUrl + '/content/' + pageData.pageid,
             headers: {
               'Content-Type': 'application/json'
             },
