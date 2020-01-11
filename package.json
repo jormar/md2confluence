@@ -44,7 +44,7 @@
     "prettier": "^1.19.1"
   },
   "dependencies": {
-    "glob": "^7.1.6",
+    "globby": "^11.0.0",
     "image-size": "^0.8.3",
     "inquirer": "7.0.3",
     "js-yaml": "^3.13.1",
