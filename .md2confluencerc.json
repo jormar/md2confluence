@@ -1,0 +1,8 @@
+{
+  "baseUrl": "https://globalworldwide.atlassian.net/wiki/rest/api",
+  "user": "matthew@globalworldwide.com",
+  "pass": "9PBNar5qhvOffsCbSZkJA7C6",
+  "include": [
+    "./test/*.md"
+  ]
+}

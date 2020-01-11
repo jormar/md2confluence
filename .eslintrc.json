@@ -1,0 +1,8 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "rules": {
+    "no-await-in-loop": "off",
+    "no-continue": "off",
+    "no-restricted-syntax": "off"
+  }
+}

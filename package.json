@@ -1,25 +1,24 @@
 {
-  "name": "md2confluence",
-  "version": "2.1.0",
+  "name": "@globalworldwide/md2confluence",
+  "version": "3.0.0",
   "description": "Update confluence pages from your markdown files (like a README.md)",
   "main": "dist/index.js",
   "bin": {
     "md2confluence": "bin/md2confluence"
   },
   "files": [
-    "dist",
+    "lib",
     "bin"
   ],
   "scripts": {
+    "format": "prettier lib/index.js --write",
     "lint": "eslint lib/index.js",
-    "prebuild": "npm run lint",
-    "build": "babel lib --out-dir dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": ""
+    "pretest": "npm run format && npm run lint",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jormar/md2confluence.git"
+    "url": "git+https://github.com/globalworldwide/md2confluence.git"
   },
   "keywords": [
     "confluence",
@@ -34,25 +33,28 @@
   "author": "Jormar Arellano <jormar.arellano@gmail.com> (https://github.com/jormar)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jormar/md2confluence/issues"
+    "url": "https://github.com/globalworldwide/md2confluence/issues"
   },
-  "homepage": "https://github.com/jormar/md2confluence#readme",
+  "homepage": "https://github.com/globalworldwide/md2confluence#readme",
   "devDependencies": {
-    "babel": "6.23.0",
-    "babel-cli": "6.26.0",
-    "babel-preset-es2015": "6.24.1",
-    "eslint": "5.12.1",
-    "eslint-config-airbnb": "17.1.0",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-react": "7.12.4"
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "2.19.1",
+    "prettier": "^1.19.1"
   },
   "dependencies": {
-    "fs-promise": "2.0.3",
-    "inquirer": "6.2.1",
+    "glob": "^7.1.6",
+    "image-size": "^0.8.3",
+    "inquirer": "7.0.3",
+    "js-yaml": "^3.13.1",
     "markdown2confluence": "1.3.0",
-    "request": "2.88.0",
-    "request-promise": "4.2.2",
-    "winston": "3.1.0"
+    "markdown2confluence-cws": "^2.0.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "winston": "3.2.1"
+  },
+  "engines": {
+    "node": ">= 12"
   }
 }
